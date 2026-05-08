@@ -1,4 +1,3 @@
-```md
 ## nunique()user_id
 > [!NOTE]
 **counting each user only once**
