@@ -1,7 +1,14 @@
-## nunique()user_id **counting each user only once**
+```md
+## nunique()user_id
+> [!NOTE]
+**counting each user only once**
+> [!NOTE]
 > `nunique()` means **number of unique values**
-<ins> user_count = orders_df['user_id'].nunique() </ins>
+```python
+user_count = orders_df['user_id'].nunique()
 user_count
+
 ## the total 
-<ins> trips_count = trips_df['trip_id'].count() </ins>
+```python
+trips_count = trips_df['trip_id'].count()
 trips_count
