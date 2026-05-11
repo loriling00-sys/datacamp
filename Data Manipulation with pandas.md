@@ -1,20 +1,6 @@
-# Introducing DataFrames 课程笔记
+# Introducing DataFrames Course Notes
 
-## 1. 本节课学习目标
-
-学完这一节后，你需要能回答下面几个问题：
-
-1. What is pandas?
-2. What is rectangular data?
-3. What is a DataFrame?
-4. How do we quickly explore a new DataFrame?
-5. What are the main components of a DataFrame?
-6. What is the difference between a method and an attribute in pandas?
-
----
-
-## 2. Key Vocabulary
-
+## 1. Key Vocabulary
 | English term | 中文理解 | 记忆方式 |
 |---|---|---|
 | pandas | Python 数据处理包 | 用来整理、分析、查看表格数据 |
@@ -31,34 +17,24 @@
 
 ---
 
-## 3. What is pandas?
-
-pandas is a Python package for data manipulation.
-
-中文理解：
-
+## 2. What is pandas?
+pandas is a Python package for data manipulation.  
 pandas 是 Python 中最常用的数据处理工具之一。  
 它主要用来处理表格形式的数据，比如 Excel 表、CSV 文件、数据库表格等。
 
-pandas 可以做的事情包括：
-
+pandas 可以做的事情包括：  
 1. 查看数据
 2. 筛选数据
 3. 修改数据
 4. 汇总数据
 5. 可视化数据
-6. 读取 CSV、Excel 等文件
-
-本节课重点是认识 pandas 中最核心的数据结构：DataFrame。
+6. 读取 CSV、Excel 等文件  
+> 本节课重点是认识 pandas 中最核心的数据结构：DataFrame。
 
 ---
 
-## 4. pandas is built on NumPy and Matplotlib
-
-pandas is built on top of NumPy and Matplotlib.
-
-中文理解：
-
+## 3. pandas is built on NumPy and Matplotli
+pandas is built on top of NumPy and Matplotlib.  
 pandas 的底层依赖两个重要工具：
 
 | Package | 作用 |
@@ -66,23 +42,17 @@ pandas 的底层依赖两个重要工具：
 | NumPy | 提供数组结构和数值计算能力 |
 | Matplotlib | 提供绘图和数据可视化能力 |
 
-简单理解：
-
+> 简单理解：  
 pandas 用 NumPy 来存储和处理数据。  
 pandas 用 Matplotlib 来画图。
 
 ---
 
-## 5. Rectangular Data
-
-Rectangular data is also called tabular data.
-
-中文理解：
-
+## 4. Rectangular Data
+Rectangular data is also called tabular data.  
 Rectangular data 指的是像表格一样的数据。
 
 表格数据通常由行和列组成：
-
 | dog name | breed | color | height_cm | weight_kg |
 |---|---|---|---:|---:|
 | Bella | Labrador | Brown | 56 | 25 |
@@ -90,7 +60,6 @@ Rectangular data 指的是像表格一样的数据。
 | Lucy | Beagle | Black | 38 | 12 |
 
 在这个例子中：
-
 | 概念 | 对应内容 |
 |---|---|
 | observation | 每一只狗，也就是每一行 |
@@ -98,24 +67,18 @@ Rectangular data 指的是像表格一样的数据。
 | row | 一条记录 |
 | column | 一个变量 |
 
-一句话记忆：
-
+> 一句话记忆：  
 A row is one observation.  
 A column is one variable.
 
 ---
 
-## 6. What is a DataFrame?
-
-In pandas, rectangular data is represented as a DataFrame object.
-
-中文理解：
-
+## 5. What is a DataFrame?
+In pandas, rectangular data is represented as a DataFrame object.  
 DataFrame 就是 pandas 里的表格对象。  
 你可以把它理解成 Python 里的 Excel 表。
 
 DataFrame 的特点：
-
 1. 有行
 2. 有列
 3. 每一列有列名
@@ -124,7 +87,6 @@ DataFrame 的特点：
 6. 同一列中的数据通常属于同一种类型
 
 例如：
-
 ```python
 import pandas as pd
 
@@ -140,11 +102,9 @@ dogs
 
 ---
 
-## 7. Exploring a DataFrame
-
+## 6. Exploring a DataFrame
 当你拿到一个新数据集时，不应该立刻计算。  
 第一步应该是快速查看数据长什么样。
-
 常用方法和属性有：
 
 | Code | Type | Purpose |
@@ -161,11 +121,8 @@ dogs
 
 ## 8. `.head()`
 
-`.head()` returns the first few rows of the DataFrame.
-
-中文理解：
-
-`.head()` 用来查看 DataFrame 的前几行。  
+`.head()` returns the first few rows of the DataFrame.  
+ 用来查看 DataFrame 的前几行。    
 默认显示前 5 行。
 
 ```python
@@ -190,10 +147,7 @@ dogs.head(3)
 ## 9. `.info()`
 
 `.info()` displays information about the DataFrame.
-
-中文理解：
-
-`.info()` 用来查看 DataFrame 的整体信息，包括：
+用来查看 DataFrame 的整体信息，包括：
 
 1. 行数
 2. 列数
@@ -498,68 +452,6 @@ dogs.index
 
 ---
 
-## 18. 小练习
-
-### Exercise 1
-
-Given a DataFrame called `dogs`, how do you view the first five rows?
-
-Answer:
-
-```python
-dogs.head()
-```
-
-### Exercise 2
-
-How do you check the number of rows and columns?
-
-Answer:
-
-```python
-dogs.shape
-```
-
-### Exercise 3
-
-How do you check column names and data types?
-
-Answer:
-
-```python
-dogs.info()
-```
-
-### Exercise 4
-
-How do you get summary statistics for numerical columns?
-
-Answer:
-
-```python
-dogs.describe()
-```
-
-### Exercise 5
-
-Which one needs parentheses?
-
-```python
-dogs.shape
-dogs.head()
-```
-
-Answer:
-
-```python
-dogs.head()
-```
-
-Because `.head()` is a method.  
-`.shape` is an attribute.
-
----
-
 ## 19. 易错点总结
 
 ### Mistake 1: 给 attribute 加括号
@@ -623,28 +515,8 @@ pandas 用 `.index` 表示行标签。
 
 ---
 
-## 20. 最后复习框架
-
-可以按照下面顺序复习：
-
-1. pandas 是什么？
-2. DataFrame 是什么？
-3. row 和 column 分别代表什么？
-4. `.head()` 查看什么？
-5. `.info()` 查看什么？
-6. `.shape` 输出的顺序是什么？
-7. `.describe()` 统计哪些内容？
-8. `.to_numpy()` 会丢失什么？
-9. `.columns` 和 `.index` 分别是什么？
-10. method 和 attribute 的区别是什么？
-
----
-
 ## 21. 一句话总结
 
-pandas uses DataFrames to store rectangular data, and we can quickly explore a DataFrame using `.head()`, `.info()`, `.shape`, `.describe()`, `.to_numpy()`, `.columns`, and `.index`.
-
-中文理解：
-
+pandas uses DataFrames to store rectangular data, and we can quickly explore a DataFrame using `.head()`, `.info()`, `.shape`, `.describe()`, `.to_numpy()`, `.columns`, and `.index`.  
 pandas 用 DataFrame 存储表格数据。  
 拿到新数据后，先用这些方法和属性快速检查数据结构、数据类型、行列数量和基本统计信息。
