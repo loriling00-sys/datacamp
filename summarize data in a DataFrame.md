@@ -1,27 +1,15 @@
 # Summary Statistics in pandas
-
-This lesson teaches how to **summarize data in a DataFrame**.
-
-中文：这一节的核心是用 pandas 快速总结数据，不需要逐行查看原始数据。
+This lesson teaches how to **summarize data in a DataFrame**.这一节的核心是用 pandas 快速总结数据，不需要逐行查看原始数据。
 
 ---
-
 ## 1. What are summary statistics?
-
-**Summary statistics** are numbers that describe a dataset.
-
+**Summary statistics** are numbers that describe a dataset.  
 For example:
-
 ```python
 dogs["weight_kg"].mean()
 ```
-
-This gives the average dog weight.
-
-中文：这行代码计算狗的平均体重。
-
+This gives the average dog weight. 这行代码计算狗的平均体重。  
 Common summary statistics:
-
 | Method | Meaning | 中文 |
 |---|---|---|
 | `.mean()` | average value | 平均值 |
@@ -35,19 +23,13 @@ Common summary statistics:
 | `.quantile()` | percentile value | 分位数 |
 
 Example:
-
 ```python
 dogs["height_cm"].max()
 ```
-
 Meaning:
-
 ```text
-Find the tallest dog.
+Find the tallest dog.找出最高的狗。
 ```
-
-中文：找出最高的狗。
-
 ---
 
 ## 2. Summary statistics for dates
@@ -277,58 +259,6 @@ The Walmart dataset has columns like:
 | `temperature_c` | average temperature |
 | `fuel_price_usd_per_l` | fuel price |
 | `unemployment` | unemployment rate |
-
-Example questions you can answer:
-
-```python
-sales["weekly_sales"].mean()
-```
-
-Question:
-
-```text
-What is the average weekly sales?
-```
-
-中文：平均每周销售额是多少？
-
-```python
-sales["weekly_sales"].max()
-```
-
-Question:
-
-```text
-What is the highest weekly sales value?
-```
-
-中文：最高周销售额是多少？
-
-```python
-sales["date"].min()
-```
-
-Question:
-
-```text
-What is the earliest date in the dataset?
-```
-
-中文：数据集中最早的日期是哪一天？
-
-```python
-sales["date"].max()
-```
-
-Question:
-
-```text
-What is the latest date in the dataset?
-```
-
-中文：数据集中最晚的日期是哪一天？
-
----
 
 ## Key sentence to remember
 
