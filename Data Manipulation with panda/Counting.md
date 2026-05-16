@@ -64,15 +64,11 @@ Example:
 
 ---
 ## 6. Counting Categories with `value_counts()`
-
 After removing duplicates, we can count how many dogs belong to each breed.
-
 ```python
 unique_dogs["breed"].value_counts()
 ```
-
 Example output:
-
 ```text
 Labrador     3
 Poodle       2
@@ -80,48 +76,28 @@ Chow Chow    1
 Chihuahua    1
 Name: breed, dtype: int64
 ```
-
-This tells us how many unique dogs there are in each breed.
-
-中文辅助：  
-`value_counts()` 用来统计每个分类值出现的次数。
+This tells us how many unique dogs there are in each breed. `value_counts()` 用来统计每个分类值出现的次数。
 
 ---
-
 ## 7. Sorting Counts
-
-By default, `value_counts()` sorts the result from the largest count to the smallest count.
-
+By default, `value_counts()` sorts the result from the largest count to the smallest count. `sort=True` 会让数量最多的类别排在最上面。  
+这是默认行为。  
 You can also make it explicit:
-
 ```python
 unique_dogs["breed"].value_counts(sort=True)
 ```
-
 If you do not want sorting:
-
 ```python
 unique_dogs["breed"].value_counts(sort=False)
 ```
-
-中文辅助：  
-`sort=True` 会让数量最多的类别排在最上面。  
-这是默认行为。
-
 ---
-
 ## 8. Calculating Proportions
-
-Sometimes, counts are not enough. We may want to know the percentage of each category.
-
-Use `normalize=True`.
-
+Sometimes, counts are not enough. We may want to know the percentage of each category.  
+Use `normalize=True`.`normalize=True` 会把数量转换成比例。  
 ```python
 unique_dogs["breed"].value_counts(normalize=True)
 ```
-
 Example output:
-
 ```text
 Labrador     0.25
 Poodle       0.20
@@ -129,19 +105,11 @@ Chow Chow    0.15
 Chihuahua    0.10
 Name: breed, dtype: float64
 ```
-
-This means Labradors make up 25% of the dogs.
-
-中文辅助：  
-`normalize=True` 会把数量转换成比例。  
-例如 `0.25` 表示 25%。
+This means Labradors make up 25% of the dogs. 例如 `0.25` 表示 25%。  
 
 ---
-
 ## 9. Full Workflow
-
 A common workflow is:
-
 ```python
 # Remove duplicate dogs based on name and breed
 unique_dogs = vet_visits.drop_duplicates(subset=["name", "breed"])
@@ -152,14 +120,11 @@ breed_counts = unique_dogs["breed"].value_counts()
 # Calculate breed proportions
 breed_props = unique_dogs["breed"].value_counts(normalize=True)
 ```
-
-中文辅助：  
 完整思路是先去重，再计数，再根据需要计算比例。
 
 ---
 
 ## 10. Key pandas Methods
-
 | Method | Purpose | Example |
 |---|---|---|
 | `drop_duplicates()` | Remove repeated rows | `df.drop_duplicates(subset=["name", "breed"])` |
@@ -169,68 +134,46 @@ breed_props = unique_dogs["breed"].value_counts(normalize=True)
 | `normalize=True` | Return proportions instead of counts | `value_counts(normalize=True)` |
 
 ---
-
 ## 11. Common Mistakes
-
 ### Mistake 1: Counting before removing duplicates
-
 ```python
 vet_visits["breed"].value_counts()
 ```
-
-This may count vet visits, not unique dogs.
-
+This may count vet visits, not unique dogs.  
 Better:
-
 ```python
 unique_dogs = vet_visits.drop_duplicates(subset=["name", "breed"])
 unique_dogs["breed"].value_counts()
 ```
-
-中文辅助：  
 直接统计可能得到的是就诊次数，而不是狗的数量。
 
 ### Mistake 2: Using only one column for duplicates
-
 ```python
 vet_visits.drop_duplicates(subset="name")
 ```
-
-This may remove different dogs with the same name.
-
+This may remove different dogs with the same name.  
 Better:
-
 ```python
 vet_visits.drop_duplicates(subset=["name", "breed"])
-```
-
-中文辅助：  
+``` 
 如果只用名字去重，重名的狗可能会被误删。
 
 ---
 
 ## 12. What You Should Remember
-
 The central idea of this lesson is:
-
 ```text
 Remove duplicates first, then count categories.
 ```
-
 In pandas:
-
 ```python
 unique_dogs = vet_visits.drop_duplicates(subset=["name", "breed"])
 unique_dogs["breed"].value_counts()
 ```
-
 For proportions:
-
 ```python
 unique_dogs["breed"].value_counts(normalize=True)
 ```
-
-中文辅助：  
 本节课最重要的逻辑是：  
 先去重，再统计分类数量。  
 如果要看比例，加上 `normalize=True`。
