@@ -1,36 +1,22 @@
 # Counting Categorical Data in pandas
 
 ## 1. Lesson Goal
-
-In this lesson, you learn how to summarize categorical data by counting values.
-
-中文辅助：这一节的核心是学习如何统计分类数据。例如统计每个狗品种出现了多少次。
+In this lesson, you learn how to summarize categorical data by counting values. 这一节的核心是学习如何统计分类数据。例如统计每个狗品种出现了多少次。
 
 After this lesson, you should understand:
-
 - how to avoid double counting
 - how to use `drop_duplicates()`
 - how to count categories with `value_counts()`
 - how to calculate proportions with `normalize=True`
-
 ---
-
 ## 2. Why Counting Matters
-
-Numeric columns can be summarized with statistics such as mean, median, min, and max.
-
-Categorical columns need a different approach. We often summarize them by counting how many times each category appears.
-
+Numeric columns can be summarized with statistics such as mean, median, min, and max. 数值型数据可以求平均值、最大值、最小值。
+Categorical columns need a different approach. We often summarize them by counting how many times each category appears.分类数据通常要统计每一类出现了多少次。  
 Example question:
 
 ```text
 How many dogs of each breed visited the vet?
 ```
-
-中文辅助：  
-数值型数据可以求平均值、最大值、最小值。  
-分类数据通常要统计每一类出现了多少次。
-
 ---
 
 ## 3. The Double Counting Problem
