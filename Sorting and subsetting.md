@@ -1,4 +1,3 @@
-# Lesson goal
 ## 1.Sort rows 排序
 > Sorting means changing the order of the rows.  
 ### Sort from smallest to largest
