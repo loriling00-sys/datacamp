@@ -10,7 +10,7 @@ After this lesson, you should understand:
 - how to calculate proportions with `normalize=True`
 ---
 ## 2. Why Counting Matters
-Numeric columns can be summarized with statistics such as mean, median, min, and max. 数值型数据可以求平均值、最大值、最小值。
+Numeric columns can be summarized with statistics such as mean, median, min, and max. 数值型数据可以求平均值、最大值、最小值。  
 Categorical columns need a different approach. We often summarize them by counting how many times each category appears.分类数据通常要统计每一类出现了多少次。  
 Example question:
 
@@ -18,15 +18,9 @@ Example question:
 How many dogs of each breed visited the vet?
 ```
 ---
-
 ## 3. The Double Counting Problem
-
-Suppose we have a DataFrame of vet visits.
-
-Some dogs may have visited the vet more than once.
-
-Example:
-
+Suppose we have a DataFrame of vet visits.  
+Some dogs may have visited the vet more than once. 同一只狗可能去了很多次兽医诊所。 
 | name | breed |
 |---|---|
 | Max | Chow Chow |
@@ -35,68 +29,40 @@ Example:
 | Stella | Chihuahua |
 | Max | Labrador |
 
-If we directly count the `breed` column, the same dog may be counted multiple times.
-
-中文辅助：  
-同一只狗可能去了很多次兽医诊所。  
-如果直接统计品种，就可能重复计算同一只狗。
+If we directly count the `breed` column, the same dog may be counted multiple times. 如果直接统计品种，就可能重复计算同一只狗。
 
 ---
-
 ## 4. Removing Duplicates with `drop_duplicates()`
-
 ### 4.1 Drop duplicates based on one column
-
 ```python
 unique_dogs = vet_visits.drop_duplicates(subset="name")
 ```
-
 This keeps only the first row for each unique dog name.
-
-However, this can cause a problem.
-
-If two different dogs have the same name, one of them may be removed.
-
+However, this can cause a problem.  
+If two different dogs have the same name, one of them may be removed. 只根据 `name` 去重有风险，因为不同的狗可能重名。  
 Example:
-
 ```text
 Max the Chow Chow
 Max the Labrador
 ```
-
 If we only use `name`, pandas may keep only one Max.
 
-中文辅助：  
-只根据 `name` 去重有风险，因为不同的狗可能重名。
-
 ---
-
 ## 5. Dropping Duplicate Pairs
-
 To avoid removing different dogs with the same name, we can use more than one column.
-
 ```python
 unique_dogs = vet_visits.drop_duplicates(subset=["name", "breed"])
 ```
-
-This means pandas checks duplicate pairs of `name` and `breed`.
-
-A row is considered duplicate only when both values are repeated.
-
+This means pandas checks duplicate pairs of `name` and `breed`. `subset=["name", "breed"]` 的意思是同时看名字和品种。  
+A row is considered duplicate only when both values are repeated. 只有名字和品种都相同，才认为是重复数据。  
 Example:
-
 | name | breed | Result |
 |---|---|---|
 | Max | Chow Chow | kept |
 | Max | Chow Chow | duplicate |
 | Max | Labrador | kept |
 
-中文辅助：  
-`subset=["name", "breed"]` 的意思是同时看名字和品种。  
-只有名字和品种都相同，才认为是重复数据。
-
 ---
-
 ## 6. Counting Categories with `value_counts()`
 
 After removing duplicates, we can count how many dogs belong to each breed.
