@@ -4,17 +4,16 @@ For example:
 ```python
 dogs["weight_kg"].mean()
 ```
-This gives the average weight of **all dogs**.  
-But very often, we do not only want one overall number.  
-We want to compare different groups.
+> This gives the average weight of **all dogs**.  
+> But very often, we do not only want one overall number.  
+> We want to compare different groups.
 > 之前是对整列求平均、最大值、最小值。  
 > 这一节的重点是：按类别分组以后，再分别计算统计值。
- 
 For example:
 - What is the average weight of each dog color?
 - Are female dogs taller than male dogs on average?
-- Which breed has the highest average weight? 
-
+- Which breed has the highest average weight?
+  
 ---
 ## 2. Why grouped summaries are useful
 Imagine you have a dog dataset like this:
@@ -31,6 +30,7 @@ dogs["weight_kg"].mean()
 ```
 You get one overall average.
 But this does not tell you whether brown dogs are heavier than black dogs.
+
 To compare groups, you could manually subset the DataFrame:
 ```python
 dogs[dogs["color"] == "Brown"]["weight_kg"].mean()
@@ -54,6 +54,7 @@ dogs.groupby("color")["weight_kg"].mean()
 > 1. Group the rows by `color`, 表示按颜色分组。  
 > 2. Select the `weight_kg` column '表示只看体重这一列。 
 > 3. Calculate the mean weight for each color,`.mean()` 表示每一组分别求平均值。
+
 Output example:
 ```text
 color
@@ -113,6 +114,7 @@ Meaning:
 - `min`: smallest weight in each color group
 - `max`: largest weight in each color group
 - `sum`: total weight in each color group
+  
 ---
 ## 6. Common summary functions
 You can use many summary functions after `groupby()`. 
@@ -134,6 +136,7 @@ dogs.groupby("breed")["weight_kg"].median()
 > Calculate the median weight for each breed.  
 > 分组后可以接很多统计函数。  
 > 关键是先想清楚：你要按哪一列分组，要统计哪一列，要用什么统计方法。
+
 ---
 ## 7. Grouping by multiple variables
 You can group by more than one column.  
