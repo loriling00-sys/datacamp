@@ -81,9 +81,11 @@ This returns the whole list.
 
 ---
 
-## 3. DataFrame Slicing Needs a Sorted Index
+## 3. DataFrame Slicing Needs a Sorted Index DataFrame 切片需要排序索引
 
 When slicing a DataFrame by index labels, it is best to sort the index first.
+
+当按索引标签对 DataFrame 进行切片时，最好先对索引进行排序。
 
 Example:
 
@@ -99,11 +101,15 @@ dogs.set_index(["breed", "color"])
 
 sets `breed` and `color` as a multi level index.
 
+将 `breed` 和 `color` 设置为多级索引。
+
 ```python
 .sort_index()
 ```
 
 sorts the index so slicing works predictably.
+
+对索引进行排序，使切片操作能够按预期工作。
 
 中文理解：DataFrame 用 index label 做范围切片时，先排序可以让 pandas 按顺序找到起点和终点。
 
@@ -141,13 +147,17 @@ This is different from list slicing, where the stop position is excluded.
 
 When the DataFrame has a multi level index, each row label can contain more than one part.
 
+当 DataFrame 具有多级索引时，每一行标签可以包含多个部分。
+
 Example index structure:
 
 ```text
 breed, color
 ```
 
-To slice across multiple index levels, use tuples.
+To slice across multiple index levels, use tuples. 
+
+要跨越多个索引级别进行切片，请使用元组。
 
 Example:
 
@@ -177,12 +187,14 @@ is the last index value to include.
 
 A DataFrame has two dimensions:
 
+DataFrame 具有两个维度：
+
 ```text
 rows
 columns
 ```
 
-`.loc` can take two arguments:
+`.loc` can take two arguments: 两个参数：
 
 ```python
 df.loc[row_slice, column_slice]
@@ -252,7 +264,7 @@ dogs_birth.loc["2014-08-25":"2016-09-16"]
 
 ---
 
-## 9. Slicing by Partial Dates
+## 9. Slicing by Partial Dates 日期切片
 
 pandas can understand partial dates.
 
@@ -283,7 +295,7 @@ So it includes all dates in:
 
 ## 10. Subsetting by Row and Column Number with `.iloc`
 
-`.iloc` selects data by integer position.
+`.iloc` selects data by integer position. 按整数位置选择数据。
 
 Basic structure:
 
@@ -334,7 +346,7 @@ Chinese support:
 
 ### `.iloc`
 
-Use integer positions:
+Use integer positions -- 使用整数位置：
 
 ```python
 df.iloc[row_positions, column_positions]
