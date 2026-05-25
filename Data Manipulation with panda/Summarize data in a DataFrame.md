@@ -1,7 +1,3 @@
-# Summary Statistics in pandas
-This lesson teaches how to **summarize data in a DataFrame**.这一节的核心是用 pandas 快速总结数据，不需要逐行查看原始数据。
-
----
 ## 1. What are summary statistics?
 **Summary statistics** are numbers that describe a dataset.  
 For example:
