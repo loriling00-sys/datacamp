@@ -4,11 +4,10 @@ This lesson is about working with pivot tables after they have already been crea
 
 You learned earlier how to create a pivot table with `pivot_table()`. In this lesson, the focus shifts to two practical skills:
 
+这一节不是单纯讲如何创建 pivot table，而是讲创建之后如何继续操作它，比如筛选某一部分数据，或者按行、按列计算平均值。
+
 1. Subsetting pivot tables with `.loc[]` and slicing.
 2. Calculating summary statistics across rows or columns with the `axis` argument.
-
-中文说明：  
-这一节不是单纯讲如何创建 pivot table，而是讲创建之后如何继续操作它，比如筛选某一部分数据，或者按行、按列计算平均值。
 
 ---
 
@@ -18,12 +17,11 @@ The lesson uses a larger dog dataset because pivot tables become more useful whe
 
 A small dataset may not show clear patterns, but a larger dataset allows us to calculate meaningful group-level summaries, such as:
 
+数据量更大时，pivot table 才更有意义。因为它的核心作用是“分组后汇总”，数据太少就不容易看出规律。
+
 - average height by breed
 - average weight by color
 - average value grouped by both breed and color
-
-中文说明：  
-数据量更大时，pivot table 才更有意义。因为它的核心作用是“分组后汇总”，数据太少就不容易看出规律。
 
 ---
 
@@ -66,7 +64,6 @@ This creates a table where:
 - each column is a dog color
 - each cell is the mean height for that breed and color combination
 
-中文说明：  
 这个表的每一个格子，表示“某个品种 + 某种颜色”的狗的平均身高。
 
 ---
@@ -76,6 +73,8 @@ This creates a table where:
 A pivot table in pandas is still a DataFrame.
 
 That means you can use DataFrame tools on it, such as:
+
+pivot table 看起来像一种特殊表格，但在 pandas 里它仍然是 DataFrame。所以之前学过的 `.loc[]`、slicing、summary statistics 都可以继续使用。
 
 ```python
 .loc[]
@@ -97,9 +96,6 @@ The lesson highlights this idea:
 
 > `.loc[]` plus slicing is a powerful combination for subsetting pivot tables.
 
-中文说明：  
-pivot table 看起来像一种特殊表格，但在 pandas 里它仍然是 DataFrame。所以之前学过的 `.loc[]`、slicing、summary statistics 都可以继续使用。
-
 ---
 
 ## 5. Using `.loc[]` and slicing on pivot tables
@@ -116,6 +112,8 @@ This selects rows from `"Chow Chow"` to `"Poodle"` based on the row index.
 
 You can also subset rows and columns together:
 
+`.loc[]` 使用标签名进行筛选。对于 pivot table 来说，行标签通常是 `index` 参数指定的分组变量，列标签通常是 `columns` 参数指定的分组变量。
+
 ```python
 height_by_breed_vs_color.loc["Chow Chow":"Poodle", "Black":"Brown"]
 ```
@@ -125,10 +123,6 @@ General structure:
 ```python
 df.loc[row_slice, column_slice]
 ```
-
-中文说明：  
-`.loc[]` 使用标签名进行筛选。对于 pivot table 来说，行标签通常是 `index` 参数指定的分组变量，列标签通常是 `columns` 参数指定的分组变量。
-
 ---
 
 ## 6. Understanding the `axis` argument
@@ -171,6 +165,8 @@ Why?
 
 Because each column represents a color, and pandas looks down the rows within each color column.
 
+`axis="index"` 表示沿着行方向向下计算。结果通常是“每一列得到一个统计值”。在这个例子中，每一列是颜色，所以结果是每种颜色的平均身高。
+
 Result idea:
 
 ```text
@@ -180,9 +176,6 @@ Brown    mean height across breeds
 Gray     mean height across breeds
 White    mean height across breeds
 ```
-
-中文说明：  
-`axis="index"` 表示沿着行方向向下计算。结果通常是“每一列得到一个统计值”。在这个例子中，每一列是颜色，所以结果是每种颜色的平均身高。
 
 A simple way to remember:
 
@@ -212,6 +205,8 @@ Why?
 
 Because each row represents a breed, and pandas looks across the color columns within that row.
 
+`axis="columns"` 表示沿着列方向横向计算。结果通常是“每一行得到一个统计值”。在这个例子中，每一行是品种，所以结果是每个品种的平均身高。
+
 Result idea:
 
 ```text
@@ -221,9 +216,6 @@ Chow Chow      mean height across colors
 Labrador       mean height across colors
 Poodle         mean height across colors
 ```
-
-中文说明：  
-`axis="columns"` 表示沿着列方向横向计算。结果通常是“每一行得到一个统计值”。在这个例子中，每一行是品种，所以结果是每个品种的平均身高。
 
 A simple way to remember:
 
